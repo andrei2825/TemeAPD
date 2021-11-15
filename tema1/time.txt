@@ -1,0 +1,4 @@
+sh: ./skel/tema1: cannot execute binary file: Exec format error
+real 0.08
+user 0.04
+sys 0.04

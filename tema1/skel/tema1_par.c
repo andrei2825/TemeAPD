@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <sys/time.h>
-#include "genetic_algorithm.h"
+#include "genetic_algorithm_par.h"
 
 int main(int argc, char *argv[]) {
 	struct timeval start, end;
@@ -19,11 +19,14 @@ int main(int argc, char *argv[]) {
 	// number of generations
 	int generations_count = 0;
 
-	if (!read_input(&objects, &object_count, &sack_capacity, &generations_count, argc, argv)) {
+	// number of threads
+	int num_threads = 0;
+
+	if (!read_input(&objects, &object_count, &sack_capacity, &generations_count, &num_threads, argc, argv)) {
 		return 0;
 	}
 
-	run_genetic_algorithm(objects, object_count, generations_count, sack_capacity);
+	run_genetic_algorithm(objects, object_count, generations_count, sack_capacity, num_threads);
 
 	free(objects);
 	gettimeofday(&end, NULL);
